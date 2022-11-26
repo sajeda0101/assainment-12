@@ -1,38 +1,19 @@
 import React from 'react';
-import img from '../../../../assets/homepageImg/baby.jpg'
+import img from '../../../../assets/homepageImg/saree1.jpg'
+
 
 const About = () => {
     return (
-        <div>
-            <div className="carousel max-w-7xl h-96 mx-auto mt-5 rounded">
-  <div id="slide1" className="carousel-item relative w-full">
-    <img src={img} className="w-full" />
-   
-    <div className="absolute flex justify-start transform -translate-y-1/2 left-24 right-12 top-2/4">
-    <h1 className='text-4xl text-white'>This is our site</h1>
-    </div>
-    <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-12  bottom-0">
-      <a href="#slide4" className="btn btn-circle mr-3">❮</a> 
-      <a href="#slide2" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide2" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
-      <a href="#slide1" className="btn btn-circle mr-3">❮</a> 
-      <a href="#slide3" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide3" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide2" className="btn btn-circle">❮</a> 
-      <a href="#slide4" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
- 
-</div>
+        <div className="hero  min-h-screen  mt-12 w-5/6 mx-auto rounded" style={{ backgroundImage: `url(${img})` }}>
+        <div className="hero-overlay bg-opacity-30"></div>
+        <div className="hero-content text-center text-neutral-content">
+          <div className=" mt-60 max-w-md">
+            <h1 className="mb-5 text-4xl text-white font-bold">Welcome Our Online Shop</h1>
+            <p className="mb-5 text-white text-xl">Shopping is an activity in which a customer browses the available goods or services presented by one or more retailers with the potential intent to purchase .</p>
+            <button className="btn btn-primary">Shop Now</button>
+          </div>
         </div>
+      </div>
     );
 };
 

@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from '../../../assets/homepageImg/logo.png'
 const Header = () => {
     const menuItem=<>
-        <li ><Link to='/' className=' mx-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Home</Link></li>
-        <li><Link to='/login' className=' mx-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
+        <li ><Link to='/' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Home</Link></li>
+        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
+        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
+        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
+        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
+        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
     </>
     return (
         <div className="navbar bg-slate-200 px-24 text-black">
@@ -17,7 +21,9 @@ const Header = () => {
         {menuItem}
       </ul>
     </div>
-    <p className='text-3xl font-bold'>daisyUI</p>
+    <p className='text-3xl font-bold flex justify-center items-center'>
+      <img src={logo} alt="" className=' mr-2 w-16 h-16 rounded-full' />
+      StyleWorld</p>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
