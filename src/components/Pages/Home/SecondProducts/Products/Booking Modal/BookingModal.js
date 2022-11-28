@@ -21,7 +21,7 @@ const BookingModal = ({product}) => {
       location
      
     };
-    console.log(number,location)
+   
     fetch("http://localhost:5000/booked", {
       method: "POST",
       headers: {

@@ -12,20 +12,22 @@ const Header = () => {
     .catch(err=>console.log(err))
   }
     const menuItem=<>
-        <li ><Link to='/' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Home</Link></li>
-        <li><Link to='/blog' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Blog</Link></li>
-        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
-    <li> <Link to='/dashboard' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Dashboard</Link></li>
-    {/* <button className="mr-28" onClick={handleLogout}>Logout</button> */}
+        <li ><Link to='/' className='   hover:bg-indigo-600 hover:text-white rounded'>Home</Link></li>
+        <li><Link to='/blog' className='  hover:bg-indigo-600 hover:text-white rounded'>Blog</Link></li>
+    <li> <Link to='/dashboard' className='  hover:bg-indigo-600 hover:text-white rounded'>Dashboard</Link></li>
 
  
-      {/* {
+      {
         user?.uid?        
-      <button className="mr-28" onClick={handleLogout}>Logout</button>
+       <>
+       <li><Link to='/addProduct' className='  hover:bg-indigo-600 hover:text-white rounded'>Add Product</Link></li>
+        <li><Link to='/myProduct' className='  hover:bg-indigo-600 hover:text-white rounded'>My Product</Link></li>
+      <button className='  hover:bg-indigo-600 hover:text-white rounded' onClick={handleLogout}>Logout</button>
+       </> 
         
         :
-        <li><Link className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
-       } */}
+        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
+       }
 
     </>
     return (

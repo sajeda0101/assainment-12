@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddProduct from "../../components/AddProduct/AddProduct";
 import Blog from "../../components/Blog/Blog";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import Errorpage from "../../components/Errorpage/Errorpage";
 import Login from "../../components/Login/Login";
+import MyProduct from "../../components/MyProduct/MyProduct";
 import Home from "../../components/Pages/Home/Home";
 import Products from "../../components/Pages/Home/SecondProducts/Products/Products";
 import Signup from "../../components/Signup/Signup";
@@ -15,7 +17,9 @@ export const router=createBrowserRouter([
         {path:'/login',element:<Login/>},
         {path:'/category/:id',element:<Products/>,loader:({params})=>fetch(`http://localhost:5000/products?category_id=${params.id}`)},
         {path:'/blog',element:<Blog/>},
-        {path:'/signup',element:<Signup/>}
+        {path:'/signup',element:<Signup/>},
+        {path:'/addProduct',element:<AddProduct/>},
+        {path:'/myProduct',element:<MyProduct/>}
     ]},
     {
         path:'/dashboard',element:<DashboardLayout/>,children:[
