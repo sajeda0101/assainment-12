@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import login from '../../assets/login/login.svg'
 import google from '../../assets/login/google.png'
@@ -9,12 +8,31 @@ import { AuthContext } from '../../Context/UserContext/UserContext';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const{signIngoogle, signInGithub}=useContext(AuthContext)
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+  const{signIngoogle, signInGithub, signin}=useContext(AuthContext)
+   
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    const form = e.target;
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+   signin(email,password)
+   .then(result=>{
+    toast.success('Succefuuly login')
+    const user=result.user
+    console.log(user);
+   })
+   .catch(err=>console.log(err))
+  }
+ 
+
     const handleSigninGoogle = () => {
       signIngoogle()
-        .then(() => {})
+      .then((result) => {
+        console.log(result.user)
+        toast.success('Successfully signin by google')
+      })
         .catch((error) => console.log(error));
     };
   
@@ -27,6 +45,7 @@ const Login = () => {
       })
       .catch(err=>console.log(err))
     }
+
     return (
       <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">

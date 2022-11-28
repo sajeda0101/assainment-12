@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import logo from '../../../assets/homepageImg/logo.png'
+import { AuthContext } from '../../../Context/UserContext/UserContext';
 const Header = () => {
+  const {user,logOut}=useContext(AuthContext)
+ 
+  const handleLogout=()=>{
+    logOut()
+    .then(toast.success('User Logged Out'))
+    .catch(err=>console.log(err))
+  }
     const menuItem=<>
         <li ><Link to='/' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Home</Link></li>
+        <li><Link to='/blog' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Blog</Link></li>
         <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
-        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
-        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
-        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
-        <li><Link to='/login' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
+    <li> <Link to='/dashboard' className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Dashboard</Link></li>
+    {/* <button className="mr-28" onClick={handleLogout}>Logout</button> */}
+
+ 
+      {/* {
+        user?.uid?        
+      <button className="mr-28" onClick={handleLogout}>Logout</button>
+        
+        :
+        <li><Link className=' mr-1 text-xl hover:bg-indigo-600 hover:text-white rounded'>Login</Link></li>
+       } */}
+
     </>
     return (
         <div className="navbar bg-slate-200 px-24 text-black">
@@ -30,6 +48,9 @@ const Header = () => {
     {menuItem}
     </ul>
   </div>
+  <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </label>
 </div>
     );
 };

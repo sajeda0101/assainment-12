@@ -1,21 +1,42 @@
-import React, { useContext } from 'react';
+import { confirmPasswordReset } from 'firebase/auth';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../../../Context/UserContext/UserContext';
+import BookingModal from './Booking Modal/BookingModal';
 
 const Products = () => {
+  const products=useLoaderData()
     const {loading}=useContext(AuthContext)
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
-          <img src="https://placeimg.com/400/225/arch" alt="Shoes" className="rounded-xl" />
-        </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+{
+  products.map(product=>
+  
+    <div className="card w-96 bg-base-100 shadow-xl"  key={product._id}>
+    <figure className="px-10 pt-10">
+      <img src={product.img} alt={product.name} className="rounded-xl " />
+    </figure>
+    <div className="card-body ">
+      <h2 className="card-title">{product.name}</h2>
+      <p>Original Price:{product.price}</p>
+      <p>Resale Price:{product.resale}</p>
+      <p>Location:{product.location}</p>
+      <p>Use of years:{product.use}</p>
+      <p>Posted:{product.post_time}</p>
+      <p>Seller Name:{product.seller_name}</p>
+      <div className="card-actions">
+        {/* <button className="btn btn-primary w-72">Book Now</button> */}
+        <label htmlFor="booking-modal" className="btn w-72 text-white">Book Now</label>
+  <BookingModal product={product}></BookingModal>
       </div>
+    </div>
+  </div>
+  
+  )
+}
+
+</div>
+     
     );
 };
 
