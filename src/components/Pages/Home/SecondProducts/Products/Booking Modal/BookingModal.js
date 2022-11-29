@@ -22,7 +22,7 @@ const BookingModal = ({product}) => {
      
     };
    
-    fetch("http://localhost:5000/booked", {
+    fetch("https://style-world.vercel.app/booked", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,31 +58,34 @@ const BookingModal = ({product}) => {
           >
             ✕
           </label>
-          <form onSubmit={submitBooking} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <form onSubmit={submitBooking} className="card flex-shrink-0 w-full max-w-sm shadow bg-base-100">
             <div className="card-body">
               <h1 className="text-2xl text-center mb-3">Booking Info</h1>
               <div className="form-control">
                 <input
                   type="text"
                   placeholder="Your name"
-                  className="input input-bordered"
+                  className="input input-bordered  rounded-xl"
                   defaultValue={user.displayName}
-                />
+                
+          />
               </div>
               <div className="form-control">
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="input input-bordered"
+                  className="input input-bordered  rounded-xl"
                   defaultValue={user.email}
+              
                 />
               </div>
               <div className="form-control">
                 <input
                   type="text"
                   placeholder="Product Name"
-                  className="input input-bordered"
+                  className="input input-bordered  rounded-xl"
                   defaultValue={product.name}
+                  required
                 />
               </div>
               <div className="form-control">
@@ -90,8 +93,9 @@ const BookingModal = ({product}) => {
                 <input
                   type="text"
                   placeholder="Product Price"
-                  className="input input-bordered"
+                  className="input input-bordered  rounded-xl"
                   defaultValue={product.resale}
+                  required
                   ></input>
                   </div>
 
@@ -100,7 +104,8 @@ const BookingModal = ({product}) => {
                   type="number"
                   placeholder="Your Number"
                   name="phone"
-                  className="input input-bordered"
+                  className="input input-bordered  rounded-xl"
+                  required
                 />
             
               </div>
@@ -111,11 +116,11 @@ const BookingModal = ({product}) => {
                   type="text"
                   name='location'
                   placeholder="Meeting Location"
-                  className="input input-bordered"
+                  className="input input-bordered  rounded-xl"
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-indigo-900 text-xl text-white">Submit</button>
+                <button className="btn bg-indigo-900  rounded-xl text-xl text-white">Submit</button>
               </div>
             </div>
           </form>

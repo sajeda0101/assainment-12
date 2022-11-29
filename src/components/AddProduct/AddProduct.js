@@ -15,7 +15,7 @@ const AddProduct = () => {
 
     const handleAdd=(productInfo)=>{
     
-      fetch("http://localhost:5000/addProduct", {
+      fetch("https://style-world.vercel.app/addProduct", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const AddProduct = () => {
             type="text"
             {...register('seller_name')}
             placeholder="Your name"
-            className="input input-bordered"
+            className="input input-bordered  rounded-xl"
             defaultValue={user.displayName}
           />
         </div>
@@ -58,7 +58,7 @@ const AddProduct = () => {
             type="text"
             {...register('email')}
             placeholder="Your email"
-            className="input input-bordered"
+            className="input input-bordered  rounded-xl"
             defaultValue={user.email}
           />
         </div>
@@ -68,7 +68,8 @@ const AddProduct = () => {
             type="text"
             {...register('name')}
             placeholder="Your product name"
-            className="input input-bordered"
+            className="input input-bordered rounded-xl"
+            required
           />
         </div>
         <div className="form-control">
@@ -77,7 +78,8 @@ const AddProduct = () => {
             type="file"
             {...register('img')}
             placeholder="Your product img"
-            className="input input-bordered"
+            className="input input-bordered rounded-xl"
+            required
           />
         </div>
         <div className="form-control">
@@ -86,7 +88,8 @@ const AddProduct = () => {
             type="text"
             {...register('price')}
             placeholder="Product price"
-            className="input input-bordered"
+            className="input input-bordered rounded-xl"
+            required
           />
         </div>
         <div className="form-control">
@@ -95,7 +98,8 @@ const AddProduct = () => {
             type="text"
             {...register('resale')}
             placeholder="Product resale price"
-            className="input input-bordered"
+            className="input input-bordered rounded-xl"
+            required
           />
         </div>
         <div className="form-control">
@@ -104,7 +108,7 @@ const AddProduct = () => {
             type="text"
             {...register('location')}
             placeholder="Location"
-            className="input input-bordered"
+            className="input input-bordered rounded-xl"
           />
         </div>
         <div className="form-control">
@@ -113,8 +117,9 @@ const AddProduct = () => {
             type="text"
             {...register('description')}
             placeholder="description"
-            className="input input-bordered"
+            className="input input-bordered rounded-xl"
             name='description'
+            required
           />
         </div>
         <div className="form-control">
@@ -123,7 +128,8 @@ const AddProduct = () => {
             type="text"
             {...register('use')}
             placeholder="Years of purchase"
-            className="input input-bordered"
+            className="input input-bordered rounded-xl"
+            required
          
           />
         </div>
@@ -131,8 +137,8 @@ const AddProduct = () => {
    
           <select
           {...register('condition')} 
-          className="select  select-bordered w-full max-w-xs">
-            <option disabled selected>
+          className="select  select-bordered  rounded-xl w-full max-w-xs">
+            <option disabled selected  required>
               Product Condition
             </option>
             <option >Excellent</option>
@@ -147,14 +153,15 @@ const AddProduct = () => {
             {...register('phone')}
             placeholder="Your mobile number"
            
-            className="input input-bordered"
+            className="input input-bordered rounded-xl"
+            required
           />
         </div>
         <div className="form-control">
    
           <select
           {...register('category')}
-          className="select   select-bordered w-full max-w-xs">
+          className="select   select-bordered  rounded-xl w-full max-w-xs">
             <option disabled selected>
            Product Category
             </option>
@@ -166,7 +173,7 @@ const AddProduct = () => {
        
     
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Add</button>
+          <button className="btn btn-primary rounded-xl">Add</button>
         </div>
       </div>
     </form>

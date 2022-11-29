@@ -6,18 +6,20 @@ import github from '../../assets/login/github.jpg'
 
 import { AuthContext } from '../../Context/UserContext/UserContext';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const{signIngoogle, signInGithub, signin}=useContext(AuthContext)
    
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-    const form = e.target;
+  const handlelogin=(data)=>{
+  
 
-    const email = form.email.value;
-    const password = form.password.value;
-
-   signin(email,password)
+   signin(data.email,data.password)
    .then(result=>{
     toast.success('Succefuuly login')
     const user=result.user
@@ -54,7 +56,7 @@ const Login = () => {
          <img src={login} alt="" />
         </div>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(handlelogin)}
           className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
         >
           <div className="card-body">
@@ -66,8 +68,12 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered  rounded-xl"
+                {...register("email", { required: "Email is required" })}
+
               />
+            {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+
             </div>
             <div className="form-control">
               <label className="label">
@@ -77,8 +83,21 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered  rounded-xl"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be 6 characters long",
+                  },
+                  pattern: {
+                    value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                    message:
+                      "Password must have uppercase, number and special characters",
+                  },})}
               />
+                {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+
 
               <label className="label">
                 <Link className="label-text-alt link link-hover">
@@ -123,7 +142,7 @@ const Login = () => {
          </div>
         
           <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary  rounded-xl">Login</button>
             </div>
           </div>
         </form>

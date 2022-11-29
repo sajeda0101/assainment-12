@@ -15,7 +15,7 @@ export const router=createBrowserRouter([
     {path:'/',errorElement:<Errorpage/>,element:<Main/>,children:[
         {path:'/',element:<Home/>},
         {path:'/login',element:<Login/>},
-        {path:'/category/:id',element:<Products/>,loader:({params})=>fetch(`http://localhost:5000/products?category_id=${params.id}`)},
+        {path:'/category/:id',element:<Products/>,loader:({params})=>fetch(`https://style-world.vercel.app/products?category_id=${params.id}`)},
         {path:'/blog',element:<Blog/>},
         {path:'/signup',element:<Signup/>},
         {path:'/addProduct',element:<AddProduct/>},
