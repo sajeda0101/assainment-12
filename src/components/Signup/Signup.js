@@ -21,7 +21,7 @@ const Signup = () => {
 
   useTitle("Signup");
   const handlesignup = (userInfo) => {
-    console.log(userInfo)
+
     const name=userInfo.name
   
     // createUser  by password and email
@@ -49,7 +49,7 @@ const Signup = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          
           getUserToken(userInfo.email)
           if (data.acknowledged) {
             toast.success("Successfully signup")            
@@ -61,12 +61,6 @@ const Signup = () => {
           console.error("Error:", error);
         });
   };
-
-  // const saveUser=(name,email)=>{
-  //   const user={name,email};
-    
-  //     setUserEmail(email)})
-  // }
 
   // jwt token access
 
@@ -166,7 +160,7 @@ const Signup = () => {
               <div className="form-control">
    
    <select
-   {...register('user-type')} 
+   {...register('user')} 
    className="select  select-bordered  rounded-xl w-full max-w-xs">
      <option disabled selected  required>
       user Type

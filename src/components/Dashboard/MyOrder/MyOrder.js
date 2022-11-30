@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
 import { AuthContext } from '../../../Context/UserContext/UserContext';
 
 const MyOrder = () => {
@@ -7,17 +6,6 @@ const {user}=useContext(AuthContext)
 const [products,setProduct]=useState([])
 console.log(products
     )
-
-      // specific data get by match email
-      // const url=`http://localhost:5000/booking?email=${user?.email}`
-      // const {data:bookings=[]}=useQuery({
-      //   queryKey:['booking',user?.email],
-      //   queryFn:async()=>{
-      //       const res=await fetch(url)
-      //       const data=await res.json()
-      //       return data
-      //   }
-      // })
 
       useEffect(() => {
     fetch(`http://localhost:5000/booking?email=${user.email}`,{

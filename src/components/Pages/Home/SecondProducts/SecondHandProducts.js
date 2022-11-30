@@ -10,7 +10,7 @@ const SecondHandProducts = () => {
         .then(res=>res.json())
         .then(data=>setCategories(data))
     },[])
-    console.log(categories)
+   
 
     return (
         <div className='bg-indigo-200 w-5/6 mx-auto rounded  p-9 my-12'>
@@ -18,7 +18,7 @@ const SecondHandProducts = () => {
            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
            {
                 categories.map(category=>
-                    <div className="card w-72 bg-base-100 shadow-xl">
+                    <div key={category._id} className="card w-72 bg-base-100 shadow-xl">
   <figure className="px-10 pt-10">
     <img src={category.img} alt="Shoes" className="w-36 rounded-xl" />
   </figure>

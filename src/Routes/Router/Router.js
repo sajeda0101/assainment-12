@@ -9,6 +9,8 @@ import Login from "../../components/Login/Login";
 import Home from "../../components/Pages/Home/Home";
 import Products from "../../components/Pages/Home/SecondProducts/Products/Products";
 import Signup from "../../components/Signup/Signup";
+import AllBuyer from "../../Layout/DashboardLayout/AllBuyer/AllBuyer";
+import AllSeller from "../../Layout/DashboardLayout/AllSellers/AllSeller";
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import Main from "../../Layout/Main/Main";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
@@ -31,8 +33,7 @@ export const router = createBrowserRouter([
       },
       { path: "/blog", element: <Blog /> },
       { path: "/signup", element: <Signup /> },
-      {path:'/addProduct',element:<AddProduct></AddProduct>},
-      {path:'/myProduct',element:<MyProduct/>}
+      // {path:'/addProduct',element:<AddProduct></AddProduct>},
       
     ],
   },
@@ -40,7 +41,12 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardLayout />,
     children: [
-      { path: "/dashboard", element: <MyOrder/>}
-  ],
+      // { path: "/dashboard", element: <MyOrder/>},
+      {path:'/dashboard/addProduct',element:<AddProduct/>},
+      {path:'/dashboard/allSeller',element:<AllSeller/>},
+      {path:'/dashboard/allBuyer',element:<AllBuyer/>},
+      {path:'/dashboard/myProduct',element:<MyProduct/>}
+
+    ],
   },
 ]);

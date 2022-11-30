@@ -4,14 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'react-toastify/dist/ReactToastify.css'
-
 import UserContext from './Context/UserContext/UserContext';
 import { ToastContainer } from 'react-toastify';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <UserContext>
+        <QueryClientProvider client={queryClient}>
+
+    <UserContext>
   <ToastContainer
 position="top-center"
 autoClose={2000}
@@ -26,6 +35,8 @@ theme="light"
 />
   <App />
   </UserContext>
+  </QueryClientProvider>
+
   </React.StrictMode>
 );
 

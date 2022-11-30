@@ -14,8 +14,6 @@ const Header = () => {
     const menuItem=<>
     
         <li ><Link to='/' className='   hover:bg-indigo-600 hover:text-white rounded'>Home</Link></li>
-        <li ><Link to='/addProduct' className='   hover:bg-indigo-600 hover:text-white rounded'>Add Product</Link></li>
-        <li ><Link to='/myProduct' className='   hover:bg-indigo-600 hover:text-white rounded'>My Product</Link></li>
         <li><Link to='/blog' className='  hover:bg-indigo-600 hover:text-white rounded'>Blog</Link></li>
     <li> <Link to='/dashboard' className='  hover:bg-indigo-600 hover:text-white rounded'>Dashboard</Link></li>
 
