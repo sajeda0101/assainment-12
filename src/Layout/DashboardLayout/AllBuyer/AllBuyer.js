@@ -50,6 +50,7 @@ const AllBuyer = () => {
   }
   return (
     <div>
+        <h1 className='text-3xl text-center my-6'>All Buyer</h1>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
@@ -59,7 +60,7 @@ const AllBuyer = () => {
               </th>
               <th>Name</th>
               <th>Email</th>
-              <th></th>
+             
               <th></th>
             </tr>
           </thead>
@@ -77,7 +78,6 @@ const AllBuyer = () => {
                 <td>
                   <p>{user.email}</p>
                 </td>
-                <td> <button className="btn btn-ghost btn-xs" onClick={()=>handleAdmin(user._id)}>Admin</button></td>
 
                 <th>
                   <button onClick={()=>handleDelete(user._id)} className="btn btn-ghost btn-xs">Delete</button>

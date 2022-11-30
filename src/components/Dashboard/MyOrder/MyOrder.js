@@ -4,7 +4,7 @@ import { AuthContext } from '../../../Context/UserContext/UserContext';
 const MyOrder = () => {
 const {user}=useContext(AuthContext)
 const [products,setProduct]=useState([])
-console.log(products
+console.log( user.email
     )
 
       useEffect(() => {
