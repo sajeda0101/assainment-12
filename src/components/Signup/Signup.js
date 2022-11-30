@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import google from "../../assets/login/google.png";
 import github from "../../assets/login/github.jpg";
 import login from "../../assets/login/login.svg";
@@ -9,30 +9,77 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const Signup = () => {
+  const [userEmail,setUserEmail]=useState('')
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { user, createUser, updateUser, signIngoogle, loading, signInGithub } =
+  const {  createUser, updateUser, signIngoogle, loading, signInGithub } =
     useContext(AuthContext);
 
   useTitle("Signup");
   const handlesignup = (userInfo) => {
+    console.log(userInfo)
+    const name=userInfo.name
+  
     // createUser  by password and email
     createUser(userInfo.email, userInfo.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Successfully signup");
-        userInfo.target.reset();
-        updateUser(userInfo.name, userInfo.photoURL)
-          .then(() => {})
+        ;
+        
+        updateUser(name)
+          .then(() => {
+            
+          })
           .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
+
+      // user create
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          getUserToken(userInfo.email)
+          if (data.acknowledged) {
+            toast.success("Successfully signup")            
+          } else {
+            toast.success("Please ");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
   };
+
+  // const saveUser=(name,email)=>{
+  //   const user={name,email};
+    
+  //     setUserEmail(email)})
+  // }
+
+  // jwt token access
+
+  const getUserToken=email=>{
+    fetch(`http://localhost:5000/jwt?email=${email}`)
+    .then(res=>res.json())
+    .then(data=>
+      {
+        if(data.accessToken){
+            localStorage.setItem('accessToken',data.accessToken)
+        }
+      })
+  }
   const handleSigninGoogle = () => {
     signIngoogle()
       .then((result) => {
@@ -77,7 +124,6 @@ const Signup = () => {
               />
                   {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
             </div>
-
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -85,7 +131,7 @@ const Signup = () => {
               <input
                 type="email"
                 placeholder="email"
-                {...register("email", { required: "Email is required" })}
+                {...register("email", { required:true})}
                 className="input input-bordered  rounded-xl"
                 
               />
@@ -113,18 +159,22 @@ const Signup = () => {
                 className="input input-bordered  rounded-xl"
               />
                 {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
-              <select
-                {...register("user-type")}
-                name=""
-                id=""
-                className="select select-bordered w-40 rounded-xl mt-4"
-              >
-                <option value="" disabled selected>
-                  Select user type
-                </option>
-                <option value="">Seller</option>
-                <option value="">Buyer</option>
-              </select>
+              </div>
+
+              <div className="form-control">
+   
+   <select
+   {...register('user-type')} 
+   className="select  select-bordered  rounded-xl w-full max-w-xs">
+     <option disabled selected  required>
+      user Type
+     </option>
+     <option >Buyer</option>
+     <option  >Seller</option>
+    
+   </select>
+ </div>
+              <div>
 
               <label className="label">
                 <Link className="label-text-alt link link-hover">

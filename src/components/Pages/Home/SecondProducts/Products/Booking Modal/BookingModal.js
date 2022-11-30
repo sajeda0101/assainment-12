@@ -3,26 +3,36 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../../../../../Context/UserContext/UserContext";
 
 const BookingModal = ({product}) => {
-  const {user}=useContext(AuthContext)
+  const {user}=useContext(AuthContext);
+  const [productName,setProductName]=useState(null)
   
   const submitBooking=(e)=>{
       e.preventDefault()
       const form=e.target;
       const number=form.phone.value;
       const location=form.location.value
+      const userName=user.displayName;
+      const userEmail=user.email
+      const  name=product.name;
+      const product_id=product._id
+      const  price=product.resale;
+      const img=product.img;
     
+
     const booking = {
-      product_id:product._id,
-      product_name:product.name,
+      product_id,
+    name,
      number,
-      userName:user.displayName,
-      email:user.email,
-      product_price:product.resale,
-      location
+      userName,
+      userEmail,
+      price,
+      location,
+      img
      
     };
+    console.log(booking)
    
-    fetch("https://style-world.vercel.app/booked", {
+    fetch("http://localhost:5000/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,6 +43,7 @@ const BookingModal = ({product}) => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
+          form.reset()
           toast.success("successfully added booked");
         } else {
           toast.success("Please Book Product");
@@ -85,7 +96,16 @@ const BookingModal = ({product}) => {
                   placeholder="Product Name"
                   className="input input-bordered  rounded-xl"
                   defaultValue={product.name}
-                  required
+                  
+                />
+              </div>
+              <div className="form-control">
+                <input
+                  type="text"
+                  placeholder="Product Image"
+                  className="input input-bordered  rounded-xl"
+                  defaultValue={product.img}
+                  
                 />
               </div>
               <div className="form-control">

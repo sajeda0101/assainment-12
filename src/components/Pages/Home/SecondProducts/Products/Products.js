@@ -6,15 +6,14 @@ import BookingModal from './Booking Modal/BookingModal';
 
 const Products = () => {
   const products=useLoaderData()
-    const {loading}=useContext(AuthContext)
     return (
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
 {
   products.map(product=>
   
-    <div className="card w-96 bg-base-100 mx-auto shadow-xl lg:h-3/5 mt-12"  key={product._id}>
+    <div className="card w-96 bg-base-100 mx-auto shadow-xl lg:h-4/5 mt-12"  key={product._id}>
     <figure className="px-10 pt-10">
-      <img src={product.img} alt={product.name} className="rounded-xl " />
+      <img src={product.img} alt={product.name} className="rounded-xl  " />
     </figure>
     <div className="card-body ">
       <h2 className="card-title">{product.name}</h2>

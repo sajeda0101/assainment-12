@@ -5,10 +5,13 @@ import google from '../../assets/login/google.png'
 import github from '../../assets/login/github.jpg'
 
 import { AuthContext } from '../../Context/UserContext/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
+  // const location=useLocation();
+  const navigate=useNavigate();
+  // const from=location.state?.from?.pathname || '';
   const {
     register,
     handleSubmit,
@@ -24,6 +27,8 @@ const Login = () => {
     toast.success('Succefuuly login')
     const user=result.user
     console.log(user);
+    
+    navigate('/')
    })
    .catch(err=>console.log(err))
   }

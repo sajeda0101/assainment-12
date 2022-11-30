@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext/UserContext";
 
 const AddProduct = () => {
-  const {user}=useContext(AuthContext)
-
+  const {user,loading}=useContext(AuthContext)
+const imgbbHostKey=process.env.REACT_APP_imgbb_key;
   const {
     register,
     handleSubmit,
@@ -14,8 +14,8 @@ const AddProduct = () => {
   } = useForm();
 
     const handleAdd=(productInfo)=>{
-    
-      fetch("https://style-world.vercel.app/addProduct", {
+ 
+      fetch("http://localhost:5000/addProduct", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,6 +27,7 @@ const AddProduct = () => {
           console.log(data);
           if (data.acknowledged) {
             toast.success("successfully added product");
+            loading(false)
           } else {
             toast.success("Please add Product");
           }
@@ -75,7 +76,7 @@ const AddProduct = () => {
         <div className="form-control">
          
           <input
-            type="file"
+            type="text"
             {...register('img')}
             placeholder="Your product img"
             className="input input-bordered rounded-xl"
