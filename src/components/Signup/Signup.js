@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const Signup = () => {
-  const [userEmail,setUserEmail]=useState('')
+  const [token,setToken]=useState('')
   const {
     register,
     handleSubmit,
@@ -78,6 +78,8 @@ const Signup = () => {
         if(data.accessToken){
             localStorage.setItem('accessToken',data.accessToken)
         }
+        setToken(data.accessToken)
+
       })
   }
   const handleSigninGoogle = () => {
