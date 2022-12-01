@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import useTitle from '../../../components/UseTitle/UseTitle';
 
-const AllSeller = () => {
-    return (
-        <div>
-            <h1>All seller</h1>
-            
-        </div>
-    );
+const AllSeller = (email) => {
+   
+    ;
 };
 
 export default AllSeller;

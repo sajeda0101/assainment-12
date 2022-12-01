@@ -9,15 +9,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
-  // const location=useLocation();
+  const location=useLocation();
   const navigate=useNavigate();
-  // const from=location.state?.from?.pathname || '';
+  const from=location.state?.from?.pathname || '/';
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const{signIngoogle, signInGithub, signin}=useContext(AuthContext)
+  const{signIngoogle,loading, signInGithub, signin}=useContext(AuthContext)
    
   const handlelogin=(data)=>{
   
@@ -27,8 +27,9 @@ const Login = () => {
     toast.success('Succefuuly login')
     const user=result.user
     console.log(user);
+    loading(false);
     
-    navigate('/')
+    navigate(from,{replace:true})
    })
    .catch(err=>console.log(err))
   }

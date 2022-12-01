@@ -33,19 +33,20 @@ export const router = createBrowserRouter([
       },
       { path: "/blog", element: <Blog /> },
       { path: "/signup", element: <Signup /> },
-      // {path:'/addProduct',element:<AddProduct></AddProduct>},
       
     ],
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element:<PrivateRoute> <DashboardLayout /></PrivateRoute>,
     children: [
-      { path: "/dashboard/myorder", element: <MyOrder/>},
+      { path: "/dashboard/myorder", element: <MyOrder/>,loader:()=>fetch('http://localhost:5000/booking')},
       {path:'/dashboard/addProduct',element:<AddProduct/>},
       {path:'/dashboard/allSeller',element:<AllSeller/>},
       {path:'/dashboard/allBuyer',element:<AllBuyer/>},
-      {path:'/dashboard/myProduct',element:<MyProduct/>},
+      {path:'/dashboard/myProduct',element:<MyProduct/>,loader:()=>fetch('http://localhost:5000/addProduct')},
+      // {path:'/dashboard/reported',element:<MyProduct/>},
+
 
     ],
   },

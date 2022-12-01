@@ -2,12 +2,14 @@ import { async } from "@firebase/util";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-toastify";
+import useTitle from "../../../components/UseTitle/UseTitle";
 
 const AllBuyer = () => {
+  useTitle('All Buyer')
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch("https://style-world.vercel.app/users");
       const data = await res.json();
       return data;
     },
@@ -19,7 +21,7 @@ const AllBuyer = () => {
     const agree=window.confirm('Are you sure for delete')
     console.log(agree)
   if(agree){
-    fetch(`http://localhost:5000/users/${_id}`,{
+    fetch(`https://style-world.vercel.app/users/${_id}`,{
       method:'DELETE',
      headers:{
       'content-type':'application/json'
@@ -39,7 +41,7 @@ const AllBuyer = () => {
   }
 
   const handleAdmin=(_id)=>{
-    fetch(`http://localhost:5000/users/admin/${_id}`,{
+    fetch(`https://style-world.vercel.app/users/admin/${_id}`,{
         method:'PUT',
         
     })

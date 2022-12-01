@@ -2,9 +2,11 @@ import { confirmPasswordReset } from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../../../Context/UserContext/UserContext';
+import useTitle from '../../../../UseTitle/UseTitle';
 import BookingModal from './Booking Modal/BookingModal';
 
 const Products = () => {
+  useTitle('Second hand product')
   const products=useLoaderData()
     return (
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
@@ -24,7 +26,6 @@ const Products = () => {
       <p>Posted:{product.post_time}</p>
       <p>Seller Name:{product.seller_name}</p>
       <div className="card-actions">
-        {/* <button className="btn btn-primary w-72">Book Now</button> */}
         <label htmlFor="booking-modal" className="btn w-72 text-white  rounded-xl">Book Now</label>
   <BookingModal product={product}></BookingModal>
       </div>

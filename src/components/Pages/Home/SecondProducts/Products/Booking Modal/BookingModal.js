@@ -1,8 +1,10 @@
 import React, { useContext, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../../../../Context/UserContext/UserContext";
+import useTitle from "../../../../../UseTitle/UseTitle";
 
 const BookingModal = ({product}) => {
+  useTitle('Booking Modal')
   const {user}=useContext(AuthContext);
   const [productName,setProductName]=useState(null)
   
@@ -32,7 +34,7 @@ const BookingModal = ({product}) => {
     };
     console.log(booking)
    
-    fetch("http://localhost:5000/booking", {
+    fetch("https://style-world.vercel.app/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

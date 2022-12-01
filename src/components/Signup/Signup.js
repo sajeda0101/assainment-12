@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const Signup = () => {
+  useTitle('Signup')
   const [token,setToken]=useState('')
   const {
     register,
@@ -40,7 +41,7 @@ const Signup = () => {
       .catch((error) => console.log(error));
 
       // user create
-      fetch("http://localhost:5000/users", {
+      fetch("https://style-world.vercel.app/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,13 +50,14 @@ const Signup = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          toast.success('Successfully signup')
           
-          getUserToken(userInfo.email)
-          if (data.acknowledged) {
-            toast.success("Successfully signup")            
-          } else {
-            toast.success("Please ");
-          }
+          // getUserToken(userInfo.email)
+          // if (data.acknowledged) {
+          //   toast.success("Successfully signup")            
+          // } else {
+          //   toast.success("Please ");
+          // }
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -64,18 +66,18 @@ const Signup = () => {
 
   // jwt token access
 
-  const getUserToken=email=>{
-    fetch(`http://localhost:5000/jwt?email=${email}`)
-    .then(res=>res.json())
-    .then(data=>
-      {
-        if(data.accessToken){
-            localStorage.setItem('accessToken',data.accessToken)
-        }
-        setToken(data.accessToken)
+  // const getUserToken=email=>{
+  //   fetch(`https://style-world.vercel.app/jwt?email=${email}`)
+  //   .then(res=>res.json())
+  //   .then(data=>
+  //     {
+  //       if(data.accessToken){
+  //           localStorage.setItem('accessToken',data.accessToken)
+  //       }
+  //       setToken(data.accessToken)
 
-      })
-  }
+  //     })
+  // }
   const handleSigninGoogle = () => {
     signIngoogle()
       .then((result) => {
@@ -160,7 +162,7 @@ const Signup = () => {
               <div className="form-control">
    
    <select
-   {...register('user')} 
+   {...register('role')} 
    className="select  select-bordered  rounded-xl w-full max-w-xs">
      <option disabled selected  required>
       user Type

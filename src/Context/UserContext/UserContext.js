@@ -14,6 +14,7 @@ const githubProvider=new GithubAuthProvider();
 
 // create user
 const createUser=(email, password)=>{
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
 }
 // update user name
@@ -38,11 +39,13 @@ const signInGithub=()=>{
 
 // logout
 const logOut=()=>{
+    setLoading(true)
    return signOut(auth)
 }
 
 // login
 const signin=(email,password)=>{
+    setLoading(true)
     return signInWithEmailAndPassword(auth,email,password)
 }
 
