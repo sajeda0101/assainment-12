@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddProduct from "../../components/AddProduct/AddProduct";
 import Blog from "../../components/Blog/Blog";
-import Dashboard from "../../components/Dashboard/Dashboard";
 import MyOrder from "../../components/Dashboard/MyOrder/MyOrder";
 import MyProduct from "../../components/Dashboard/MyProduct/MyProduct";
 import Errorpage from "../../components/Errorpage/Errorpage";
@@ -40,11 +39,11 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element:<PrivateRoute> <DashboardLayout /></PrivateRoute>,
     children: [
-      { path: "/dashboard/myorder", element: <MyOrder/>,loader:()=>fetch('http://localhost:5000/booking')},
+      { path: "/dashboard/myorder", element: <MyOrder/>,loader:()=>fetch('https://style-world.vercel.app/booking')},
       {path:'/dashboard/addProduct',element:<AddProduct/>},
       {path:'/dashboard/allSeller',element:<AllSeller/>},
       {path:'/dashboard/allBuyer',element:<AllBuyer/>},
-      {path:'/dashboard/myProduct',element:<MyProduct/>,loader:()=>fetch('http://localhost:5000/addProduct')},
+      {path:'/dashboard/myProduct',element:<MyProduct/>,loader:()=>fetch('https://style-world.vercel.app/addProduct')},
       // {path:'/dashboard/reported',element:<MyProduct/>},
 
 

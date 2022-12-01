@@ -14,7 +14,7 @@ const MyProduct = () => {
     const agree=window.confirm('Are you sure for delete')
     console.log(agree)
   if(agree){
-    fetch(`http://localhost:5000/addProduct/${_id}`,{
+    fetch(`https://style-world.vercel.app/addProduct/${_id}`,{
       method:'DELETE',
      headers:{
       'content-type':'application/json'
