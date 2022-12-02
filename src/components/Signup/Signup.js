@@ -73,6 +73,7 @@ const Signup = () => {
     signIngoogle()
       .then((result) => {
         console.log(result.user);
+        
         toast.success("Successfully signin by google");
       })
       .catch((error) => console.log(error));
