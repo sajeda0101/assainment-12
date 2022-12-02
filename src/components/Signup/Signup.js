@@ -5,17 +5,21 @@ import login from "../../assets/login/login.svg";
 import { AuthContext } from "../../Context/UserContext/UserContext";
 import useTitle from "../UseTitle/UseTitle";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const Signup = () => {
   useTitle('Signup')
-  const [token,setToken]=useState('')
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const location=useLocation();
+  const navigate=useNavigate();
+  const from=location.state?.from?.pathname || '/';
 
   const {  createUser, updateUser, signIngoogle, loading, signInGithub } =
     useContext(AuthContext);
@@ -50,34 +54,21 @@ const Signup = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          toast.success('Successfully signup')
           
           // getUserToken(userInfo.email)
-          // if (data.acknowledged) {
-          //   toast.success("Successfully signup")            
-          // } else {
-          //   toast.success("Please ");
-          // }
+          if (data.acknowledged) {
+            toast.success("Successfully signup")   
+            navigate(from,{replace:true})         
+          } else {
+            toast.success("Please ");
+          }
         })
         .catch((error) => {
           console.error("Error:", error);
         });
   };
 
-  // jwt token access
 
-  // const getUserToken=email=>{
-  //   fetch(`https://style-world.vercel.app/jwt?email=${email}`)
-  //   .then(res=>res.json())
-  //   .then(data=>
-  //     {
-  //       if(data.accessToken){
-  //           localStorage.setItem('accessToken',data.accessToken)
-  //       }
-  //       setToken(data.accessToken)
-
-  //     })
-  // }
   const handleSigninGoogle = () => {
     signIngoogle()
       .then((result) => {

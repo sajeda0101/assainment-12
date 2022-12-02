@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const UseBuyer = (email) => {
-    const [isBuyer,setIsBuyer]=useState(false)
-    const [isBuyerLoading,setIsBuyerLoading]=useState(true)
-
-    useEffect(()=>{
-        if(email){
-            fetch(`https://style-world.vercel.app/users/buyer/${email}`)
-            .then(res=>res.json())
-            .then(data=>{
-                console.log(data)
-                setIsBuyer(data.isAdmin)
-                setIsBuyerLoading(false)
-            })
-        }
-    },[email])
-
-    return [isBuyer,isBuyerLoading]
-    ;
+const UseBuyer = () => {
+    return (
+        <div>
+            
+        </div>
+    );
 };
 
 export default UseBuyer;

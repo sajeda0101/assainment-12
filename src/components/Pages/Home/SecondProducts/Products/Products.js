@@ -1,7 +1,6 @@
 import { confirmPasswordReset } from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../../../../Context/UserContext/UserContext';
 import useTitle from '../../../../UseTitle/UseTitle';
 import BookingModal from './Booking Modal/BookingModal';
 

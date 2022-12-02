@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import BookingModal from './Products/Booking Modal/BookingModal';
 
 const SecondHandProducts = () => {
     const [categories,setCategories]=useState([])

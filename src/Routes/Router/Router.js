@@ -24,29 +24,39 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       {
         path: "/category/:id",
-        element:<PrivateRoute><Products /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Products />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(
-            `https://style-world.vercel.app/products?category_id=${params.id}`
-          ),
+          fetch(`https://style-world.vercel.app/products?category_id=${params.id}`),
       },
       { path: "/blog", element: <Blog /> },
       { path: "/signup", element: <Signup /> },
-      
     ],
   },
   {
     path: "/dashboard",
-    element:<PrivateRoute> <DashboardLayout /></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
-      { path: "/dashboard/myorder", element: <MyOrder/>,loader:()=>fetch('https://style-world.vercel.app/booking')},
-      {path:'/dashboard/addProduct',element:<AddProduct/>},
-      {path:'/dashboard/allSeller',element:<AllSeller/>},
-      {path:'/dashboard/allBuyer',element:<AllBuyer/>},
-      {path:'/dashboard/myProduct',element:<MyProduct/>,loader:()=>fetch('https://style-world.vercel.app/addProduct')},
+      {
+        path: "/dashboard/myorder",
+        element: <MyOrder />,
+      },
+      { path: "/dashboard/addProduct", element: <AddProduct /> },
+      { path: "/dashboard/allSeller", element: <AllSeller /> },
+      { path: "/dashboard/allBuyer", element: <AllBuyer /> },
+      {
+        path: "/dashboard/myProduct",
+        element: <MyProduct />,
+      },
       // {path:'/dashboard/reported',element:<MyProduct/>},
-
-
     ],
   },
 ]);

@@ -40,16 +40,7 @@ const AllBuyer = () => {
   
   }
 
-  const handleAdmin=(_id)=>{
-    fetch(`https://style-world.vercel.app/users/admin/${_id}`,{
-        method:'PUT',
-        
-    })
-    .then(res=>res.json())
-    .then(data=>console.log(data))
 
-
-  }
   return (
     <div>
         <h1 className='text-3xl text-center my-6'>All Buyer</h1>

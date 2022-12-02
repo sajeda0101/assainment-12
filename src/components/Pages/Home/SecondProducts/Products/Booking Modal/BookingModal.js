@@ -14,7 +14,7 @@ const BookingModal = ({product}) => {
       const number=form.phone.value;
       const location=form.location.value
       const userName=user.displayName;
-      const userEmail=user.email
+      const email=user.email
       const  name=product.name;
       const product_id=product._id
       const  price=product.resale;
@@ -26,13 +26,13 @@ const BookingModal = ({product}) => {
     name,
      number,
       userName,
-      userEmail,
+      email,
       price,
       location,
       img
      
     };
-    console.log(booking)
+    
    
     fetch("https://style-world.vercel.app/booking", {
       method: "POST",
@@ -46,6 +46,7 @@ const BookingModal = ({product}) => {
         console.log(data);
         if (data.acknowledged) {
           form.reset()
+          setProductName(null)
           toast.success("successfully added booked");
         } else {
           toast.success("Please Book Product");

@@ -1,14 +1,21 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../Context/UserContext/UserContext";
-import Products from "../../Pages/Home/SecondProducts/Products/Products";
 import useTitle from "../../UseTitle/UseTitle";
 
 const MyProduct = () => {
-  const products = useLoaderData();
+  // const products = useLoaderData();
   useTitle("My product");
   const { user } = useContext(AuthContext);
+  const {data:products=[]}=useQuery({
+    queryKey:['products',user?.email],
+    queryFn:async()=>{
+      const res=await fetch(`https://style-world.vercel.app/addProduct?email=${user.email}`)
+      const data =await res.json()
+      return data
+    }
+  })
 
   const handleDelete=(_id)=>{
     const agree=window.confirm('Are you sure for delete')

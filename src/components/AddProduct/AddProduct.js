@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { useForm } from 'react-hook-form';
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext/UserContext";
 
 const AddProduct = () => {
+  const navigate=useNavigate()
   const {user,loading}=useContext(AuthContext)
 const imgbbHostKey=process.env.REACT_APP_imgbb_key;
   const {
@@ -27,6 +28,7 @@ const imgbbHostKey=process.env.REACT_APP_imgbb_key;
           console.log(data);
           if (data.acknowledged) {
             toast.success("successfully added product");
+            navigate('/dashboard/myProduct')
             loading(false)
           } else {
             toast.success("Please add Product");
