@@ -5,7 +5,7 @@ const SecondHandProducts = () => {
     const [categories,setCategories]=useState([])
 
     useEffect(()=>{
-        fetch('https://style-world.vercel.app/category')
+        fetch('https://style-world-sajeda0101.vercel.app/category')
         .then(res=>res.json())
         .then(data=>setCategories(data))
     },[])

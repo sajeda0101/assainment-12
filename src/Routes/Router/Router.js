@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://style-world.vercel.app/products?category_id=${params.id}`),
+          fetch(`https://style-world-sajeda0101.vercel.app/products?category_id=${params.id}`),
       },
       { path: "/blog", element: <Blog /> },
       { path: "/signup", element: <Signup /> },

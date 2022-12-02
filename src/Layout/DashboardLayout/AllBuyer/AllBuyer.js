@@ -9,7 +9,7 @@ const AllBuyer = () => {
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("https://style-world.vercel.app/users");
+      const res = await fetch("https://style-world-sajeda0101.vercel.app/users");
       const data = await res.json();
       return data;
     },
@@ -21,7 +21,7 @@ const AllBuyer = () => {
     const agree=window.confirm('Are you sure for delete')
     console.log(agree)
   if(agree){
-    fetch(`https://style-world.vercel.app/users/${_id}`,{
+    fetch(`https://style-world-sajeda0101.vercel.app/users/${_id}`,{
       method:'DELETE',
      headers:{
       'content-type':'application/json'

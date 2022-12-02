@@ -45,7 +45,7 @@ const Signup = () => {
       .catch((error) => console.log(error));
 
       // user create
-      fetch("https://style-world.vercel.app/users", {
+      fetch("https://style-world-sajeda0101.vercel.app/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

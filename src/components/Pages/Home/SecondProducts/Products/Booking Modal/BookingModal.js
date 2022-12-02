@@ -34,7 +34,7 @@ const BookingModal = ({product}) => {
     };
     
    
-    fetch("https://style-world.vercel.app/booking", {
+    fetch("https://style-world-sajeda0101.vercel.app/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

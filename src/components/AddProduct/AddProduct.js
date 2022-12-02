@@ -16,7 +16,7 @@ const imgbbHostKey=process.env.REACT_APP_imgbb_key;
 
     const handleAdd=(productInfo)=>{
  
-      fetch("https://style-world.vercel.app/addProduct", {
+      fetch("https://style-world-sajeda0101.vercel.app/addProduct", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

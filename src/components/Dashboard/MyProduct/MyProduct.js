@@ -11,7 +11,7 @@ const MyProduct = () => {
   const {data:products=[]}=useQuery({
     queryKey:['products',user?.email],
     queryFn:async()=>{
-      const res=await fetch(`https://style-world.vercel.app/addProduct?email=${user.email}`)
+      const res=await fetch(`https://style-world-sajeda0101.vercel.app/addProduct?email=${user.email}`)
       const data =await res.json()
       return data
     }
@@ -21,7 +21,7 @@ const MyProduct = () => {
     const agree=window.confirm('Are you sure for delete')
     console.log(agree)
   if(agree){
-    fetch(`https://style-world.vercel.app/addProduct/${_id}`,{
+    fetch(`https://style-world-sajeda0101.vercel.app/addProduct/${_id}`,{
       method:'DELETE',
      headers:{
       'content-type':'application/json'

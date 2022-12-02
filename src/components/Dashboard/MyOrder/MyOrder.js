@@ -11,7 +11,7 @@ const MyOrder = () => {
   const {data:bookings=[]}=useQuery({
     queryKey:['booking',user?.email],
     queryFn:async()=>{
-      const res=await fetch(`https://style-world.vercel.app/booking?email=${user.email}`)
+      const res=await fetch(`https://style-world-sajeda0101.vercel.app/booking?email=${user.email}`)
       const data =await res.json()
       return data
     }
@@ -23,7 +23,7 @@ const MyOrder = () => {
     const agree=window.confirm('Are you sure for delete')
     console.log(agree)
   if(agree){
-    fetch(`https://style-world.vercel.app/booking/${_id}`,{
+    fetch(`https://style-world-sajeda0101.vercel.app/booking/${_id}`,{
       method:'DELETE',
      headers:{
       'content-type':'application/json'

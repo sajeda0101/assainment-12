@@ -9,7 +9,7 @@ const AllSeller = () => {
     console.log(sellers)
 
     useEffect(()=>{
-        fetch(`https://style-world.vercel.app/users?email=${user.email}`)
+        fetch(`https://style-world-sajeda0101.vercel.app/users?email=${user.email}`)
         .then(res=>res.json())
         .then(data=>setSeller(data))
     },[user.email])
